@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Planificador Simplex KLEINFOR</title>
+  <meta name="description" content="Modelo de programación lineal de Industrias KLEINFOR resuelto con el método Simplex y la metodología del curso, aplicado a su planta de camisas.">
+  <meta name="author" content="Jaren Jeison Alfaro Porras">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233e89bc'/%3E%3Cpath d='M9 22V10l7 7 7-7v12' fill='none' stroke='white' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css?v=4">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <a class="marca" href="#inicio">
+        <div class="marca-logo" aria-hidden="true">K</div>
+        <div class="marca-texto">
+          <strong>KLEINFOR</strong>
+          <span>Planificador Simplex</span>
+        </div>
+      </a>
+
+      <nav class="nav-grupo" aria-label="Inicio">
+        <a class="nav-link" href="#inicio" data-ruta="inicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+          Inicio
+        </a>
+      </nav>
+
+      <nav class="nav-grupo" aria-label="Resolución del modelo con la metodología del curso">
+        <div class="nav-titulo">Resolución del modelo</div>
+        <div class="nav-sub">Con la metodología del curso</div>
+        <a class="nav-link" href="#planteamiento" data-ruta="planteamiento"><span class="nav-num">1</span>Planteamiento del modelo</a>
+        <a class="nav-link" href="#tablas" data-ruta="tablas"><span class="nav-num">2</span>Tablas Simplex paso a paso</a>
+        <a class="nav-link" href="#sensibilidad" data-ruta="sensibilidad"><span class="nav-num">3</span>Análisis de sensibilidad</a>
+      </nav>
+
+      <nav class="nav-grupo" aria-label="Aplicación en la planta">
+        <div class="nav-titulo">Aplicación en la planta</div>
+        <div class="nav-sub">Con la documentación de la empresa</div>
+        <a class="nav-link" href="#diagnostico" data-ruta="diagnostico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Diagnóstico de producción
+        </a>
+        <a class="nav-link" href="#simulador" data-ruta="simulador">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+          Simulador ¿qué pasa si?
+        </a>
+        <a class="nav-link" href="#datos" data-ruta="datos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+          Datos de la empresa
+        </a>
+        <a class="nav-link" href="#tiempo" data-ruta="tiempo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
+          Tiempo estándar del botonado
+        </a>
+      </nav>
+
+      <nav class="nav-grupo" aria-label="Ayuda">
+        <div class="nav-titulo">Ayuda</div>
+        <a class="nav-link" href="#guia" data-ruta="guia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5h0"/></svg>
+          Guía de uso y glosario
+        </a>
+      </nav>
+
+      <p class="sidebar-pie">Industrias KLEINFOR E.I.R.L.<br>Investigación Operativa I · 2026-II<br>Autoría: <b>Jaren Jeison Alfaro Porras</b></p>
+    </aside>
+
+    <div class="principal">
+      <header class="barra-sup">
+        <div class="ruta" id="ruta"></div>
+        <div class="barra-acciones">
+          <a class="chip chip-supuesto" id="chip-datos" href="#datos" hidden></a>
+          <button class="btn btn-icono" type="button" data-accion="tema" id="btn-tema" aria-label="Cambiar a tema oscuro" title="Cambiar tema"></button>
+        </div>
+      </header>
+      <main class="vista" id="vista" tabindex="-1"></main>
+    </div>
+  </div>
+  <input type="file" id="archivo-importar" accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.json" hidden>
+
+  <script src="js/datos.js?v=4"></script>
+  <script src="js/simplex.js?v=4"></script>
+  <script src="js/modelos.js?v=4"></script>
+  <script src="js/excel.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
+</body>
+</html>
