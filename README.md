@@ -61,10 +61,6 @@ node pruebas/prueba-motor.js
 
 Verifica el modelo del equipo (Z = 200, rangos 8616 ≤ b1 < ∞ y 0 ≤ b2 ≤ 668.52), el problema 2 del Excel del curso, el ejemplo ATSA de minimización, las operaciones de fila del ejemplo FMA, casos no acotado e infactible, y los modelos de planta.
 
-## Desplegar para la presentación
-
-Es un sitio estático: no hay comando de compilación. La guía paso a paso para Netlify está en [DESPLIEGUE-NETLIFY.md](DESPLIEGUE-NETLIFY.md). También sirve en Vercel (*Framework Preset: Other*, sin comando de compilación) o en Render (*Static Site*, *Publish Directory* `.`).
-
 ## Datos supuestos
 
 Los informes solo documentan 2 operarios en cuellos y 1 operaria en la botonadora. En las demás estaciones se cargó 1 operario como **supuesto** (marcado en rojo). Mientras no se ingrese el dato real, los operarios disponibles son la suma de los cargados. Al ingresar el personal real en **Datos de la empresa**, todo se recalcula.

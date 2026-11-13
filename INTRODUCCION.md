@@ -37,4 +37,4 @@ Cada dato muestra su fuente y se marca como **documentado**, **simulado** o **su
 
 ## Tecnología
 
-Aplicación web estática hecha con HTML, CSS y JavaScript, sin servidor ni base de datos. Funciona en computadora y en celular, y se puede publicar gratis en Netlify o Vercel. Los datos que se editan se guardan en el navegador y se pueden descargar en Excel, junto con las tablas Simplex y el análisis de sensibilidad, para revisarlos o corregirlos y volver a cargarlos.
+Aplicación web estática hecha con HTML, CSS y JavaScript, sin servidor ni base de datos. Funciona en computadora y en celular. Los datos que se editan se guardan en el navegador y se pueden descargar en Excel, junto con las tablas Simplex y el análisis de sensibilidad, para revisarlos o corregirlos y volver a cargarlos.
